@@ -13,12 +13,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // Create User
+
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    // Update User
     public User updateUser(String userId, User updatedUser) {
         Optional<User> existingUser = userRepository.findById(userId);
         if (existingUser.isPresent()) {
@@ -26,30 +25,27 @@ public class UserService {
             user.setFirstName(updatedUser.getFirstName());
             user.setLastName(updatedUser.getLastName());
             user.setEmail(updatedUser.getEmail());
-            // Set other properties as needed
             return userRepository.save(user);
         } else {
-            // Handle user not found
             return null;
         }
     }
 
-    // Delete User
+
     public void deleteUser(String userId) {
         userRepository.deleteById(userId);
     }
 
-    // Get User by ID
+
     public Optional<User> getUserById(String userId) {
         return userRepository.findById(userId);
     }
 
-    // Get User by Email
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    // Get All Users
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

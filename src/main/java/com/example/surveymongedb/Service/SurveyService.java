@@ -16,7 +16,6 @@ public class SurveyService {
         this.surveyRepository = surveyRepository;
     }
 
-    // Add Question
     public Survey addQuestion(Survey survey) {
         return surveyRepository.save(survey);
     }
@@ -36,7 +35,6 @@ public class SurveyService {
             survey.setCategoryType(updatedSurvey.getCategoryType());
             return surveyRepository.save(survey);
         } else {
-            // Handle question not found
             return null;
         }
     }
